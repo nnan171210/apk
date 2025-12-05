@@ -1,16 +1,97 @@
+
+<!DOCTYPE html>
 <html>
-<style>
-	.btlink {
-	color: #20a53a;
-	text-decoration: none;
-}
-</style>
+<head>
 <meta charset="UTF-8">
-<html>
-<head><title>404 Not Found</title></head>
+<title>Error</title>
+
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<style>
+  *{
+	  padding:0;
+	  margin:0
+	}
+  a{
+	  text-decoration:none
+	}
+  html,body{
+	  height:100%;
+	  width:100%;
+	}
+  body{
+	  position: relative;
+	  background: #daeaf8;
+	}
+  .notfoud-container {
+	  position: absolute;
+	  top: 36%;
+	  left: 50%;
+	  margin-top: -200px;
+	  text-align: center;
+	  margin-left: -311.5px;
+	}
+  .notfoud-container .notfoud-container .notfound-reason{
+	  color:#9ca4ac;
+	  font-size:13px;
+	  line-height:13px;
+	  text-align:left;
+	  width:210px;
+	  margin:0 auto;
+	}
+  .notfoud-container .notfound-reason p{
+		margin-top:13px
+	}
+  .notfoud-container .notfound-reason ul li {
+	  margin-top: 10px;
+	  list-style: none;
+	  color: #5e8bdb;
+	  font-size: 16px;
+	  font-style: oblique;
+	}
+  .notfoud-container .notfound-btn-container{
+	  margin:40px auto 0;
+	  text-align:center
+	}
+  .notfoud-container .notfound-btn-container .notfound-btn{
+	  display:inline-block;
+	  border:1px solid #ebedef;
+	  background-color:#239bf0;
+	  color:#fff;
+	  font-size:15px;
+	  border-radius:5px;
+	  text-align:center;
+	  padding:10px;
+	  line-height:16px;
+	  white-space:nowrap
+	}
+  .notfoud-whbg{
+	  background: url(http://img.xuenn.cn/common/errormess.png)no-repeat;
+	  width:623px;
+	  height: 475px;
+	  line-height: 475px;
+	  font-size: 42px;
+	  color: #f29e77;
+	  font-weight: bold;
+	}
+</style>
+
+</head>
 <body>
-<center><h1>404 Not Found</h1></center>
-<hr>
-<div style="text-align: center;font-size: 15px" >Power by <a class="btlink" href="https://www.bt.cn/?from=404" target="_blank">堡塔 (免费，高效和安全的托管控制面板)</a></div>
+
+    <div class="notfoud-container">
+
+         <!-- <img src=/errormess.png" alt=""> -->
+         <div class="notfoud-whbg"> 网站正在维护中... </div>
+        <div class="notfound-reason">
+            <ul>
+                <li>网站正在维护中</li>
+                <li>请稍候再试</li>
+                <li>谢谢</li>
+            </ul>
+        </div>
+
+    </div>
+
 </body>
 </html>
