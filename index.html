@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>天演APK下载</title>
+  <!-- 引入 jQuery -->
+  <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 id="title">天演系统APK下载</h1>
+  <div id="apk-list"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    const apiUrl = 'http://yi.xuenn.cn/tianyan/apk/';
+
+    $.ajax({
+      url: apiUrl,
+      method: 'GET',
+      dataType: 'json', // 告诉 jQuery 自动解析 JSON
+      success: function (response) {
+        const data = response.data;
+
+        const $container = $('#apk-list');
+        const $title = $('#title');
+
+        // 更新标题数量
+        $title.text(`天演系统APK下载(共计${data.length}条数据)`);
+
+        // 遍历数据并生成链接
+        data.forEach(function (item) {
+          const $div = $('<div>').addClass('apk-item').html(`
+            <a href="d.html?id=${item.id}">${item.name}</a>
+          `);
+          $container.append($div);
+        });
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.error('获取数据失败:', textStatus, errorThrown);
+        $('#apk-list').html('<p>加载数据失败，请刷新重试。</p>');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

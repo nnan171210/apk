@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>天演APK详情</title>
+  <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container_detail" id="app">
+  <h1>加载中...</h1>
+  <div>
+    <strong>系统地址：</strong>
+    <span id="system-url">加载中...</span>
+  </div>
+  <div style="margin-top: 20px;">
+    <a id="download-btn" href="#" download>
+      <button>点击下载</button>
+    </a>
+  </div>
+  <div class="remark">
+    备注：<span id="remark_datail"></span>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    // 获取 URL 中的参数 id
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    const apiUrl = 'http://yi.xuenn.cn/tianyan/apk/';
+
+    // 发送 POST 请求
+    $.ajax({
+      url: apiUrl,
+      type: 'POST',
+      contentType: 'application/json', // 设置请求头
+      data: JSON.stringify({ id: id }), // 发送的数据
+      success: function (response) {
+        const data = response.data;
+
+        // 更新标题
+        $('#app h1').text(data.name);
+
+        // 更新备注
+        $('#remark_datail').text(data.remark);
+
+        // 更新系统地址
+        $('#system-url').text(data.url);
+
+        // 更新下载按钮链接
+        const $downloadBtn = $('#download-btn');
+        $downloadBtn.attr('href', data.path);
+        $downloadBtn.attr('download', ''); // 可选：强制浏览器下载而不是预览
+      },
+      error: function (xhr, status, error) {
+        console.error('获取数据失败:', error);
+        $('#app').html(`<p>加载数据失败：${error}</p>`);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
